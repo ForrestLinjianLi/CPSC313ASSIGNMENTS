@@ -1,0 +1,68 @@
+.pos 0x2000
+array:
+    .quad -1
+    .quad 1
+    .quad -2
+    .quad 1
+    .quad -3
+    .quad 1
+    .quad -4
+    .quad 1
+    .quad -5
+    .quad 1
+    .quad -1
+    .quad 1
+    .quad -2
+    .quad 1
+    .quad -3
+    .quad 1
+    .quad -4
+    .quad 1
+    .quad -5
+    .quad 1
+    .quad -1
+    .quad 1
+    .quad -2
+    .quad 1
+    .quad -3
+    .quad 1
+    .quad -4
+    .quad 1
+    .quad -5
+    .quad 1
+    .quad -1
+    .quad 1
+    .quad -2
+    .quad 1
+    .quad -3
+    .quad 1
+    .quad -4
+    .quad 1
+    .quad -5
+    .quad 1
+    .quad -1
+    .quad 1
+    .quad -2
+    .quad 1
+    .quad -3
+    .quad 1
+    .quad -4
+    .quad 1
+    .quad -5
+    .quad 1
+arraySize:
+    .quad 50
+
+.pos 0x2500
+resultStart:
+    .quad 0
+resultEnd:
+    .quad 0
+resultSum:
+    .quad 0
+
+.pos 0x2600
+reference:
+     .quad 0x2008
+     .quad 0x2008
+     .quad 1

@@ -1,0 +1,3 @@
+/Users/lilinjian/cs313_assign/a1_t2f_llj2015_zy0729/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/Users/lilinjian/cs313_assign/a1_t2f_llj2015_zy0729/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/lilinjian/cs313_assign/a1_t2f_llj2015_zy0729/cmake-build-debug/CMakeFiles/mytest.dir

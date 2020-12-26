@@ -1,0 +1,156 @@
+.pos 0x100
+main:
+    irmovq $stackEnd, %rsp
+    irmovq $array, %rdi
+    irmovq $arraySize, %rsi
+    irmovq $resultStart, %rdx
+    irmovq $resultEnd, %rcx
+    mrmovq (%rsi), %rsi
+    call   maxSubArray
+    irmovq $resultSum, %r8
+    rmmovq %rax, (%r8)
+    halt
+
+.pos 0x1000
+L1:
+    pushq  %rbx
+    irmovq $2, %r10
+    irmovq $8, %r8
+    rrmovq %rsi, %rbx
+    pushq  %rbp
+    irmovq $8, %rbp
+    divq   %r10, %rbx
+    rrmovq %rsi, %r9
+    pushq  %r12
+    mulq   %rbx, %rbp
+    mulq   %r8, %r9
+    pushq  %r13
+    addq   %rdi, %rbp
+    addq   %rdi, %r9
+    pushq  %r14
+    rrmovq %rbp, %r11
+    subq   %r8, %r9
+    irmovq $0x8000000000000000, %r10
+    subq   %r8, %r11
+    xorq   %rax, %rax
+L2:
+    mrmovq (%r11), %r12
+    rrmovq %r11, %r14
+    subq   %r8, %r11
+    addq   %r12, %rax
+    rrmovq %rax, %r12
+    subq   %r10, %r12
+    cmovg %rax, %r10
+    cmovg %r14, %r13
+L3:
+    rrmovq %r11, %r12
+    subq   %rdi, %r12
+    jge    L2
+L4:
+    rrmovq %rbp, %r11
+    rmmovq %r13, (%rdx)
+    xorq   %rax, %rax
+    irmovq $0x8000000000000000, %r13
+L5:
+    mrmovq (%r11), %r12
+    addq   %r12, %rax
+    rrmovq %rax, %r12
+    subq   %r13, %r12
+    cmovg %rax, %r13
+    cmovg %r11, %r14
+L6:
+    addq   %r8, %r11
+    rrmovq %r11, %r12
+    subq   %r9, %r12
+    jle    L5
+L7:
+    rmmovq %r14, (%rcx)
+    rrmovq %rsi, %r9
+    addq   %r10, %r13
+    rrmovq %rcx, %r14
+    subq   %rbx, %r9
+    pushq  %rdx
+    rrmovq %rdx, %r12
+    rrmovq %rbx, %rsi
+    rrmovq %rsp, %rdx
+    pushq  %rcx
+    rrmovq %r9, %rbx
+    rrmovq %rsp, %rcx
+    call   maxSubArray
+    popq   %rcx
+    rrmovq %rax, %r9
+    popq   %rdx
+    subq   %r13, %r9
+    jle    L8
+    rrmovq %rax, %r13
+    rmmovq %rdx, (%r12)
+    rmmovq %rcx, (%r14)
+L8:
+    pushq  %rdx
+    rrmovq %rbp, %rdi
+    rrmovq %rbx, %rsi
+    rrmovq %rsp, %rdx
+    pushq  %rcx
+    rrmovq %rsp, %rcx
+    call   maxSubArray
+    popq   %rcx
+    rrmovq %rax, %r9
+    popq   %rdx
+    subq   %r13, %r9
+    jle    L9
+    rrmovq %rax, %r13
+    rmmovq %rdx, (%r12)
+    rmmovq %rcx, (%r14)
+L9:
+    popq   %r14
+    rrmovq %r13, %rax
+    popq   %r13
+    popq   %r12
+    popq   %rbp
+    popq   %rbx
+    ret
+maxSubArray:
+    irmovq $1, %r9
+    subq   %rsi, %r9
+    jne    L1
+    mrmovq (%rdi), %r13
+    rmmovq %rdi, (%rcx)
+    rmmovq %rdi, (%rdx)
+    rrmovq %r13, %rax
+    ret
+
+
+.pos 0x2000
+array:
+    .quad 13
+    .quad -3
+    .quad -25
+    .quad -20
+    .quad -3
+    .quad -16
+    .quad -23
+    .quad 18
+    .quad 20
+    .quad -7
+    .quad 12
+    .quad -5
+    .quad -22
+    .quad 15
+    .quad -4
+    .quad 7
+arraySize:
+    .quad 16
+
+.pos 0x2500
+resultStart:
+    .quad 0
+resultEnd:
+    .quad 0
+resultSum:
+    .quad 0
+
+.pos 0x4000
+stack:
+    .quad 0, 1000
+stackEnd:
+    .quad 0

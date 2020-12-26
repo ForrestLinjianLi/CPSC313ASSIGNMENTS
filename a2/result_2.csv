@@ -1,0 +1,7 @@
+                    , SEQ, PIPE-S, PIPE-F, PIPE-FBP
+cycles               ,   146, 379, 183, 167
+instructions         ,   146, 146, 146, 146
+cycles: reorder      ,   130, 280, 163, 151
+instructions: reorder,   130, 130, 130, 130
+cycles: optimal      ,   0, 0, 0, 0
+instructions: optimal,   0, 0, 0, 0
